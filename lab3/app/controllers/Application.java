@@ -1,14 +1,21 @@
 package controllers;
 
-import play.*;
+import models.*;
 import play.mvc.*;
 
-import views.html.*;
-
 public class Application extends Controller {
+	
+	//Sistema de Planejamento de Disciplinas
 
-    public static Result index() {
-        return ok(index.render("Your new application is ready."));
-    }
+	static SPD sistema = new SPD();
+	
+	public static Result index() {
+		return redirect(routes.Application.alocacao());
+	}
+	
+	public static Result alocacao(){
+		return ok(views.html.index.render(sistema.getPeriodos()));
+		
+	}
 
 }
