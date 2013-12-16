@@ -2,7 +2,9 @@ package models;
 
 import java.util.List;
 
+// O nome da classe eh disciplina pq se encaixa no contexto
 public class Disciplina {
+	
 	private String nome;
 	private int creditos;
 	private List<String> preRequisitos;
