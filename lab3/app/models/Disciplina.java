@@ -7,6 +7,11 @@ public class Disciplina {
 	private int creditos;
 	private List<String> preRequisitos;
 	
+	public Disciplina(String nome, int creditos){
+		this.nome = nome;
+		this.creditos = creditos;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

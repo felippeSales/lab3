@@ -41,7 +41,7 @@ nome-principal {
 	margin: auto;
 	margin-top:50px;
 	margin-bottom:10px;
-	height: 460px;
+	height: 660px;
 	width: 1280px; 
 	display: inherit;
 	border-radius: 10px;
@@ -50,7 +50,7 @@ nome-principal {
 .coluna {
 	background-color: #d8e2eb;
 	float: left;
-	height: 410px;
+	height: 520px;
 	width: 148px;
 	margin-left: 10.5px;
 	margin-top: 10px;
