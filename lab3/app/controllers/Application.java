@@ -5,12 +5,11 @@ import play.mvc.*;
 
 public class Application extends Controller {
 	
-	//Sistema de Planejamento de Disciplinas
-	
 	//CONTROLER: SPD eh a classe responsavel por controlar o meu sistema
 
 	//CREATOR: a classe Application usa a classe sistema
 
+	//Sistema de Planejamento de Disciplinas
 	static SPD sistema = new SPD();
 	
 	public static Result index() {
