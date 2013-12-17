@@ -5,6 +5,7 @@ import java.util.List;
 
 public class SPD {
 	private List<Periodo> periodos;
+	private CatalogoDisc catalogo;
 
 	public SPD() {
 		periodos = new ArrayList<Periodo>();
