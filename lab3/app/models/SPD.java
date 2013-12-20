@@ -9,18 +9,16 @@ public class SPD {
 
 	public SPD() {
 		periodos = new ArrayList<Periodo>();
+		catalogo = new CatalogoDisc();
 		setPrimeiroPeriodo();
 
 	}
 
 	private void setPrimeiroPeriodo() {
 		Periodo p = new Periodo();
-		p.addDisciplinas(new Disciplina("Programacao I", 4));
-		p.addDisciplinas(new Disciplina("Lab. de Programação I", 4));
-		p.addDisciplinas(new Disciplina("Introdução a Computação", 4));
-		p.addDisciplinas(new Disciplina("Leitura e Produção de Textos", 4));
-		p.addDisciplinas(new Disciplina("Cálculo I", 4));
-		p.addDisciplinas(new Disciplina("Álgebra Vetorial e Geometria Analítica", 4));
+		for (int i = 0; i < catalogo.getCatalogo().size(); i++) {
+			p.addDisciplinas(catalogo.getCatalogo().get(i));
+		}
 		periodos.add(p);
 	}
 	
