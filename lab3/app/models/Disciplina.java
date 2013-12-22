@@ -32,5 +32,14 @@ public class Disciplina {
 	public void setPreRequisitos(List<String> preRequisitos) {
 		this.preRequisitos = preRequisitos;
 	}
+	
+	public boolean equals(Object obj){
+		if(obj instanceof Disciplina){
+		       Disciplina compara = (Disciplina)obj;
+		       if(getNome().equals(compara.getNome()))
+		           return true;
+		   }
+		   return false;
+	}
 
 }
