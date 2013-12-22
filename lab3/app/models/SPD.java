@@ -15,11 +15,12 @@ public class SPD {
 	}
 
 	private void setPrimeiroPeriodo() {
-		Periodo p = new Periodo();
-		for (int i = 0; i < catalogo.getCatalogo().size(); i++) {
-			p.addDisciplinas(catalogo.getCatalogo().get(i));
+		Periodo primeiroPeriodo = new Periodo();
+		for (int i = 0; i < 6; i++) {
+			primeiroPeriodo.addDisciplinas(catalogo.getCatalogo().get(i));
 		}
-		periodos.add(p);
+		periodos.add(primeiroPeriodo);
+		
 	}
 	
 	public List<Periodo> getPeriodos() {
