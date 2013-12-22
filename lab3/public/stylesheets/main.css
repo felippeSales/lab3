@@ -81,6 +81,28 @@ nome-principal {
 	background-color: #b2cfe9;
 }
 
+#periodo {
+	background-color: #c0c0c0;
+	margin: auto;
+	margin-top: 10px;
+	width: 1280px;
+	display: inherit;
+}
+
+.periodo{
+	background-color: #FFFFFF;
+	margin:auto;
+	margin-top:6px;
+	width: 138px;
+	border-radius: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+.periodo:hover {
+	background-color: #b3cfe9;
+}
 .float-left {
 	float: left;
 	margin-left: 10px;	
