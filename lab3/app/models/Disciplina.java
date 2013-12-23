@@ -7,7 +7,7 @@ public class Disciplina {
 
 	private String nome;
 	private int creditos;
-	private List<String> preRequisitos;
+	private List<Disciplina> preRequisitos;
 
 	public Disciplina(String nome, int creditos) {
 		this.nome = nome;
@@ -21,8 +21,12 @@ public class Disciplina {
 	public int getCreditos() {
 		return creditos;
 	}
+	
+	public void addPreRequisito(Disciplina pr){
+		preRequisitos.add(pr);
+	}
 
-	public List<String> getPreRequisitos() {
+	public List<Disciplina> getPreRequisitos() {
 		return preRequisitos;
 	}
 
@@ -34,7 +38,7 @@ public class Disciplina {
 		this.creditos = creditos;
 	}
 
-	public void setPreRequisitos(List<String> preRequisitos) {
+	public void setPreRequisitos(List<Disciplina> preRequisitos) {
 		this.preRequisitos = preRequisitos;
 	}
 
