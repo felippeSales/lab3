@@ -14,6 +14,12 @@ nome-principal {
 	font-weight: bold;
 }
 
+mensagem-erro {
+	color: #F80000 ;
+	font-size: 20px;
+	font-weight: bold;
+}
+
 .body-back {
 	background-color: #153e63;
 }
