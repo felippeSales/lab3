@@ -23,28 +23,41 @@ public class Application extends Controller {
 		return ok(index.render(sistema.getPeriodos(), sistema.getCatalogoDisc(), erro));
 	}
 
-	
-
 	public static Result disciplinaPeriodo() throws Exception{
 		try {
 
 			DynamicForm formDisciplina = new DynamicForm();
-			
+
 			final DynamicForm form = formDisciplina.bindFromRequest();
 			final String nome = form.get("nome");
 			final int periodo = Integer.parseInt(form.get("periodo")) - 1;
 
-			sistema.addDisciplinasPeriodo(periodo, nome);
+			sistema.addDisciplinaPeriodo(periodo, nome);
 
-			
+
 
 		} catch (LimitesExcedidosException e) {
 			return badRequest(index.render(sistema.getPeriodos(), sistema.getCatalogoDisc(), e.getMessage()));
 		} catch (PreRequisitosInsuficientesException e) {
 			return badRequest(index.render(sistema.getPeriodos(), sistema.getCatalogoDisc(), e.getMessage()));
 		} 
-		
-		
+
+
+		return index();
+	}
+
+	public static Result removeDisciplinaPeriodo(){
+
+
+		DynamicForm formDisciplina = new DynamicForm();
+
+		final DynamicForm form = formDisciplina.bindFromRequest();
+		final String nome = form.get("nome");
+		final int periodo = Integer.parseInt(form.get("periodo")) - 1;
+
+		sistema.removeDisciplinaPeriodo(periodo, nome);
+
 		return index();
 	}
 }
+

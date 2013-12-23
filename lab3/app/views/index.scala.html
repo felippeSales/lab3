@@ -77,8 +77,14 @@
            			 <nome-periodo>Período @(1 + periodos.indexOf(periodo))</nome-periodo>
 		            @for(disciplina <- periodo.getDisciplinas()){
 		                <div class="disciplina" id="@disciplina.getNome()">
-		                    <nome>@disciplina.getNome()</nome><br/>
-		                    <descricao>@disciplina.getCreditos() créditos</descricao>
+		                    <nome>@disciplina.getNome() <form method="post" action="@routes.Application.removeDisciplinaPeriodo()">
+                                                <input type="hidden" name="nome" value="@disciplina.getNome()"/>
+                                                <input type="hidden" name="periodo" value=periodo_@(i + 1)/>
+                                        <button type="submit" class="btn btn-danger btn-xs"  style="position:absolute; top: 40%; right: 5%; ">
+                                                <span class="glyphicon glyphicon-remove" style="width:8px; height: 8px; margin-bottom: 5px; margin-right: 3px;"></span>
+                                        </button>
+                                        </form></nome>
+                                        <descricao>@disciplina.getCreditos() creditos</descricao>
 		                </div>
             			}
             			

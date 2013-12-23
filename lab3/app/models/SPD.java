@@ -22,7 +22,7 @@ public class SPD{
 
 		try{
 			for (int i = 0; i < 6; i++) {
-				primeiroPeriodo.addDisciplinas(catalogo.getCatalogo().get(i));
+				primeiroPeriodo.addDisciplina(catalogo.getCatalogo().get(i));
 				catalogo.getCatalogo().get(i).setAlocada();
 			}
 			periodos.add(primeiroPeriodo);
@@ -42,10 +42,8 @@ public class SPD{
 		return catalogo.getCatalogo();
 	}
 	
-	public void addDisciplinasPeriodo(int periodo, String nome)throws Exception{
+	public void addDisciplinaPeriodo(int periodo, String nome)throws Exception{
 		int i = catalogo.disciplinaIndice(nome);
-		
-		
 		
 		addDisciplinasPeriodo(periodo, catalogo.getCatalogo().get(i));
 	}
@@ -57,9 +55,18 @@ public class SPD{
 			periodos.add(novoPerido);
 			addDisciplinasPeriodo(periodo, disc);
 		}else{
-			periodos.get(periodo).addDisciplinas(disc);
+			periodos.get(periodo).addDisciplina(disc);
 			disc.setAlocada();
 		}
+	}
+
+	public void removeDisciplinaPeriodo(int periodo, String nome) {
+		int i = catalogo.disciplinaIndice(nome);
+		
+		catalogo.getCatalogo().get(i).setAlocada();
+		periodos.get(i).rmDisciplina(nome);
+		
+		
 	}
 
 }
