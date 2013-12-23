@@ -43,7 +43,7 @@
         
         <form id="addCadeira" method="POST" action="@routes.Application.disciplinaPeriodo()">
         
-           <label><small>Período:</small></label>
+           <label>Período:</label>
 	                                
 	              <select name="periodo">
 		             <option value="1">1</option>
@@ -60,9 +60,7 @@
 	        @for(disciplina <- disciplinas){
 	       		@if(disciplina.getAlocada() != true){
 	                 <option value="@disciplina.getNome()">@disciplina.getNome()</option>
-	      
-	            }     
-	                 
+	            }
 	        }
 	         
 	       </select>
@@ -72,7 +70,7 @@
         <div id="colunas">
         		
                 @for((periodo, i) <- periodos.zipWithIndex) {
-           			 <div id="periodo_@(i + 1)" class="coluna">
+           			 <div id="periodo_@(i + 1)" class="coluna" align='center'>
            			 <nome-periodo>Período @(1 + periodos.indexOf(periodo))</nome-periodo>
 		            @for(disciplina <- periodo.getDisciplinas()){
 		                <div class="disciplina" id="@disciplina.getNome()">

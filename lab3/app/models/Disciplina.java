@@ -6,74 +6,138 @@ import play.data.*;
 
 import play.data.validation.Constraints.*;
 
-// O nome da classe eh disciplina pq se encaixa no contexto
+/**
+ * Classe que representa as disciplinas a serem alocadas
+ * 
+ * @author Felipe, Isabelly e Rodrigo (SI - 2013.2)
+ * 
+ */
+
 public class Disciplina {
 
 	@Required
 	private String nome;
-	
 	@Required
 	private int periodo;
-	
 	private int creditos;
+
+	// Information Expert: Cada disciplina é quem deve conhecer seus pre-requisitos.
 	private List<String> preRequisitos;
 	private boolean alocada;
-	
-	
-	public Disciplina(){}
-	
-	// Contrutor para disciplinas sem preRequisitos
+
+	/**
+	 * Construtor para disciplinas sem preRequisitos
+	 * 
+	 * @param nome
+	 *            Nome da disciplina
+	 * @param creditos
+	 *            Creditos da disciplina
+	 */
+
 	public Disciplina(String nome, int creditos) {
-		this.nome = nome;
-		this.creditos = creditos;
+		setNome(nome);
+		setCreditos(creditos);
 		alocada = false;
 	}
-	
-	// Contrutor para disciplinas com preRequisitos
+
+	/**
+	 * 
+	 * Construtor para disciplinas com preRequisitos
+	 * 
+	 * @param nome
+	 *            Nome da disciplina
+	 * @param creditos
+	 *            Creditos da disciplina
+	 * @param preRequesitos
+	 *            Lista de String com o nome das disiciplinas que sao
+	 *            preRequesitos da disciplina inicializada
+	 */
 	public Disciplina(String nome, int creditos, List<String> preRequesitos) {
 		this.nome = nome;
 		this.creditos = creditos;
 		alocada = false;
-		this.preRequisitos= preRequesitos;
+		this.preRequisitos = preRequesitos;
 	}
 
+	/**
+	 * 
+	 * @return Retorna o nome da disciplina
+	 */
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * 
+	 * @return Retorn os creditos da disciplina
+	 */
 	public int getCreditos() {
 		return creditos;
 	}
-	
-	public void addPreRequisito(String pr){
-		preRequisitos.add(pr);
-	}
 
+	/**
+	 * 
+	 * @return Retorna a lista de preRequisitos da disciplina
+	 */
 	public List<String> getPreRequisitos() {
 		return preRequisitos;
 	}
 
-	public boolean getAlocada(){
+	/**
+	 * 
+	 * @return Retorna se a disciplina já está ou não alocada
+	 */
+	public boolean getAlocada() {
 		return alocada;
 	}
-	
+
+	/**
+	 * Altera o nome da disciplina
+	 * 
+	 * @param nome
+	 *            Nome da disciplina
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	/**
+	 * Altera os creditos da disciplina
+	 * 
+	 * @param creditos
+	 *            Creditos da disciplina
+	 */
 	public void setCreditos(int creditos) {
 		this.creditos = creditos;
-	}	
-	
-	public void setAlocada(){
+	}
+
+	/**
+	 * Muda se a disciplina está alocada ou nao
+	 */
+	public void setAlocada() {
 		alocada = (alocada == false) ? true : false;
-		
 	}
 
-	public void setPreRequisitos(List<String> preRequisitos) {
-		this.preRequisitos = preRequisitos;
+	/**
+	 * 
+	 * @return Retorna o periodo que a disciplina foi alocado
+	 */
+	public int getPeriodo() {
+		return periodo;
 	}
 
+	/**
+	 * Altera o periodo que a disciplina será cursada
+	 * 
+	 * @param periodo
+	 */
+	public void setPeriodo(int periodo) {
+		this.periodo = periodo;
+	}
+
+	/**
+	 * Compara duas disciplinas
+	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof Disciplina) {
 			Disciplina compara = (Disciplina) obj;
@@ -82,15 +146,5 @@ public class Disciplina {
 		}
 		return false;
 	}
-	
-	public int getPeriodo(){
-		return this.periodo;
-	}
-	
-	public void setPeriodo(int p){
-		this.periodo = p;
-	}
-	
-	
 
 }

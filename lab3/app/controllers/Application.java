@@ -10,7 +10,7 @@ import views.html.*;
 //CREATOR: a classe Periodo guarda objetos do tipo Disciplina
 public class Application extends Controller {
 
-	//CONTROLER: SPD eh a classe responsavel por controlar o sistema
+	// CONTROLER: SPD eh a classe responsavel por controlar o sistema
 
 	// Sistema de Planejamento de Disciplinas
 	static SPD sistema = new SPD();
@@ -20,31 +20,29 @@ public class Application extends Controller {
 	static Form<Disciplina> disciplinaForm = Form.form(Disciplina.class);
 
 	public static Result index() {
-		return ok(index.render(sistema.getPeriodos(), sistema.getCatalogoDisc(), erro));
+		return ok(index.render(sistema.getPeriodos(),
+				sistema.getCatalogoDisc(), erro));
 	}
 
-	
-
-	public static Result disciplinaPeriodo() throws Exception{
+	public static Result disciplinaPeriodo() throws Exception {
 		try {
 
 			DynamicForm formDisciplina = new DynamicForm();
-			
+
 			final DynamicForm form = formDisciplina.bindFromRequest();
 			final String nome = form.get("nome");
 			final int periodo = Integer.parseInt(form.get("periodo")) - 1;
 
 			sistema.addDisciplinasPeriodo(periodo, nome);
 
-			
-
 		} catch (LimitesExcedidosException e) {
-			return badRequest(index.render(sistema.getPeriodos(), sistema.getCatalogoDisc(), e.getMessage()));
+			return badRequest(index.render(sistema.getPeriodos(),
+					sistema.getCatalogoDisc(), e.getMessage()));
 		} catch (PreRequisitosInsuficientesException e) {
-			return badRequest(index.render(sistema.getPeriodos(), sistema.getCatalogoDisc(), e.getMessage()));
-		} 
-		
-		
+			return badRequest(index.render(sistema.getPeriodos(),
+					sistema.getCatalogoDisc(), e.getMessage()));
+		}
+
 		return index();
 	}
 }
