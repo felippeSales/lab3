@@ -51,7 +51,7 @@ public class US2test {
 		assertEquals(sistema.getPeriodos().get(4).getTotalCreditos(), 4);
 		
 		try{
-			sistema.addDisciplinaPeriodo(4, "Programação I");
+			sistema.addDisciplinasPeriodo(4, "Programação I");
 		}catch(Exception e){			
 			System.out.println(e.getMessage());
 		}
@@ -59,7 +59,7 @@ public class US2test {
 		assertEquals(sistema.getPeriodos().get(4).getTotalCreditos(), 8);
 		
 		try{
-			sistema.addDisciplinaPeriodo(4, "Teoria dos Grafos");
+			sistema.addDisciplinasPeriodo(4, "Teoria dos Grafos");
 		}catch(Exception e){			
 			System.out.println(e.getMessage());
 		}
@@ -69,13 +69,28 @@ public class US2test {
 	}
 
 	@Test
+	public void removeDisciplina(){
+		try{
+			sistema.addDisciplinasPeriodo(4, "Teoria dos Grafos");
+		}catch(Exception e){			
+			System.out.println(e.getMessage());
+		}
+		
+		assertEquals(sistema.getPeriodos().get(4).getTotalCreditos(), 2);
+		
+		sistema.removeDisciplinaPeriodo(4, "Teoria dos Grafos");
+		
+		assertEquals(sistema.getPeriodos().get(4).getTotalCreditos(), 0);
+	}
+	
+	@Test
 	public void naoDeveAdiconarDisciplina(){
 		try{
 			for(int i = 0; i < 9; i++){
 				sistema.addDisciplinasPeriodo(1, new Disciplina("test",4));
 			}			
 		}catch(Exception e){
-			assertEquals(e.getMessage(), "Limite de Creditos no periodo excedido.");
+			assertEquals(e.getMessage(), "Limite de créditos , no periodo,  excedido!");
 		}
 	}
 }

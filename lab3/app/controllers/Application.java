@@ -35,15 +35,29 @@ public class Application extends Controller {
 			final int periodo = Integer.parseInt(form.get("periodo")) - 1;
 
 			sistema.addDisciplinasPeriodo(periodo, nome);
+			
+			String aux = "";
+			for(int i = 0; i < sistema.getPeriodos().size(); i++){
+				if(sistema.getPeriodos().get(i).getTotalCreditos() <= 14 && sistema.getPeriodos().get(i).getTotalCreditos() != 0){
+					if( aux.equals("")){
+						aux += "Quantidade de créditos insuficientes no: ";
+					}
+					if(i != sistema.getPeriodos().size() -1){
+						aux += (i + 1) + "º,";
+					}else{
+						aux += (i + 1) + "º.";
+					}
+				}
+			}
+			
+			return badRequest(index.render(sistema.getPeriodos(),sistema.getCatalogoDisc(),aux));
+			
 
 		} catch (LimitesExcedidosException e) {
 			return badRequest(index.render(sistema.getPeriodos(),sistema.getCatalogoDisc(), e.getMessage()));
 		} catch (PreRequisitosInsuficientesException e) {
 			return badRequest(index.render(sistema.getPeriodos(), sistema.getCatalogoDisc(), e.getMessage()));
-		} 
-
-
-		return index();
+		}
 	}
 
 	public static Result removeDisciplinaPeriodo(){
