@@ -44,7 +44,7 @@
         
         <form id="addCadeira" method="POST" action="@routes.Application.disciplinaPeriodo()">
         
-           <label><small>Período:</small></label>
+           <label>Período:</label>
 	                                
 	              <select name="periodo">
 		             <option value="1">1</option>
@@ -61,9 +61,7 @@
 	        @for(disciplina <- disciplinas){
 	       		@if(disciplina.getAlocada() != true){
 	                 <option value="@disciplina.getNome()">@disciplina.getNome()</option>
-	      
-	            }     
-	                 
+	            }
 	        }
 	         
 	       </select>
@@ -73,16 +71,16 @@
         <div id="colunas">
         		
                 @for((periodo, i) <- periodos.zipWithIndex) {
-           			 <div id="periodo_@(i + 1)" class="coluna">
+           			 <div id="periodo_@(i + 1)" class="coluna" align='center'>
            			 <nome-periodo>Período @(1 + periodos.indexOf(periodo))</nome-periodo>
 		            @for(disciplina <- periodo.getDisciplinas()){
 		                <div class="disciplina" id="@disciplina.getNome()">
 		                    <nome>@disciplina.getNome() <form method="post" action="@routes.Application.removeDisciplinaPeriodo()">
                                                 <input type="hidden" name="nome" value="@disciplina.getNome()"/>
-                                                <input type="hidden" name="periodo" value=periodo_@(i + 1)/>
-                                        <button type="submit" class="btn btn-danger btn-xs"  style="position:absolute; top: 40%; right: 5%; ">
-                                                <span class="glyphicon glyphicon-remove" style="width:8px; height: 8px; margin-bottom: 5px; margin-right: 3px;"></span>
-                                        </button>
+                                                <input type="hidden" name="periodo" value="@i"/>
+                                        		
+                                              	<input type="submit" value="X">
+                                        		
                                         </form></nome>
                                         <descricao>@disciplina.getCreditos() creditos</descricao>
 		                </div>
