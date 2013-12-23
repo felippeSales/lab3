@@ -8,10 +8,12 @@ public class Disciplina {
 	private String nome;
 	private int creditos;
 	private List<String> preRequisitos;
+	private boolean alocada;
 
 	public Disciplina(String nome, int creditos) {
 		this.nome = nome;
 		this.creditos = creditos;
+		alocada = false;
 	}
 
 	public String getNome() {
@@ -26,12 +28,23 @@ public class Disciplina {
 		return preRequisitos;
 	}
 
+	public boolean getAlocada(){
+		return alocada;
+	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
 	public void setCreditos(int creditos) {
 		this.creditos = creditos;
+	}
+	
+	
+	
+	public void setAlocada(){
+		alocada = (alocada == false) ? true : false;
+		
 	}
 
 	public void setPreRequisitos(List<String> preRequisitos) {

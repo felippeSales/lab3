@@ -21,7 +21,6 @@ public class Periodo {
 	
 	
 	//CREATOR: a classe Periodo guarda objetos do tipo Disciplina
-
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}

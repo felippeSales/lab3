@@ -5,11 +5,11 @@ import java.util.List;
 
 public class SPD {
 	private List<Periodo> periodos;
-	private CatalogoDisc catalogo;
+	private CatalogoDisciplinas catalogo;
 
 	public SPD() {
 		periodos = new ArrayList<Periodo>();
-		catalogo = new CatalogoDisc();
+		catalogo = new CatalogoDisciplinas();
 		setPrimeiroPeriodo();
 
 	}
@@ -18,6 +18,7 @@ public class SPD {
 		Periodo primeiroPeriodo = new Periodo();
 		for (int i = 0; i < 6; i++) {
 			primeiroPeriodo.addDisciplinas(catalogo.getCatalogo().get(i));
+			catalogo.getCatalogo().get(i).setAlocada();
 		}
 		periodos.add(primeiroPeriodo);
 		
