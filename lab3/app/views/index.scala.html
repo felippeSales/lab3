@@ -6,6 +6,7 @@
 
 <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"
         role="banner">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
         <div class="navbar-inverse">
                 <div class="container">
                         <div class="navbar-header">
@@ -37,13 +38,13 @@
                         @for(disciplina <- periodo.getDisciplinas()){
                                 <div class="disciplina">
                                         <nome>@disciplina.getNome()</nome><br/>
-                                        <descricao>@disciplina.getCreditos() creditos</descricao>
+                                        <descricao>@disciplina.getCreditos() créditos</descricao>
                                         
                                 </div>
                                 
                         }
                         <div class ="periodo"><nome> Total de creditos</nome><br/>
-                        <descricao>@periodo.getTotalCreditos() creditos</descricao></div>
+                        <descricao>@periodo.getTotalCreditos() créditos</descricao></div>
                         
                        </div>
                 }
@@ -64,7 +65,7 @@
                 @for(disciplina <- catalogo){
                 <div class="disciplina float-left">
                         <nome>@disciplina.getNome()</nome><br/>
-                        <descricao>@disciplina.getCreditos() creditos</descricao>
+                        <descricao>@disciplina.getCreditos() créditos</descricao>
                 </div>
                 }        
         </div>
