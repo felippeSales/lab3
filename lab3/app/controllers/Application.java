@@ -70,7 +70,21 @@ public class Application extends Controller {
 
 		sistema.removeDisciplinaPeriodo(periodo, nome);
 		
-		return index();
+		String aux = "";
+		for(int i = 0; i < sistema.getPeriodos().size(); i++){
+			if(sistema.getPeriodos().get(i).getTotalCreditos() <= 14 && sistema.getPeriodos().get(i).getTotalCreditos() != 0){
+				if( aux.equals("")){
+					aux += "Quantidade de créditos insuficientes no: ";
+				}
+				if(i != sistema.getPeriodos().size() -1){
+					aux += (i + 1) + "º,";
+				}else{
+					aux += (i + 1) + "º.";
+				}
+			}
+		}
+		
+		return badRequest(index.render(sistema.getPeriodos(),sistema.getCatalogoDisc(),aux));
 	}
 }
 
