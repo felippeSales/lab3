@@ -6,7 +6,7 @@ import java.util.List;
 //O nome da classe eh periodo pq se encaixa no contexto
 public class Periodo {
 
-	// CREATOR: Periodo eh feito de disciplinas e tem o numero total de créditos nele
+	// CREATOR: Periodo eh feito de disciplinas e tem o numero total de creditos nele
 	private List<Disciplina> disciplinas;
 	private int totalCreditos = 0;
 	
