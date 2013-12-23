@@ -2,13 +2,25 @@ package models;
 
 import java.util.List;
 
+import play.data.*;
+
+import play.data.validation.Constraints.*;
+
 // O nome da classe eh disciplina pq se encaixa no contexto
 public class Disciplina {
 
+	@Required
 	private String nome;
+	
+	@Required
+	private int periodo;
+	
 	private int creditos;
 	private List<String> preRequisitos;
 	private boolean alocada;
+	
+	
+	public Disciplina(){}
 	
 	// Contrutor para disciplinas sem preRequisitos
 	public Disciplina(String nome, int creditos) {
@@ -51,9 +63,7 @@ public class Disciplina {
 
 	public void setCreditos(int creditos) {
 		this.creditos = creditos;
-	}
-	
-	
+	}	
 	
 	public void setAlocada(){
 		alocada = (alocada == false) ? true : false;
@@ -72,5 +82,15 @@ public class Disciplina {
 		}
 		return false;
 	}
+	
+	public int getPeriodo(){
+		return this.periodo;
+	}
+	
+	public void setPeriodo(int p){
+		this.periodo = p;
+	}
+	
+	
 
 }

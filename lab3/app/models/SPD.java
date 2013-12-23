@@ -3,10 +3,12 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SPD {
-	private List<Periodo> periodos;
-	private CatalogoDisciplinas catalogo;
 
+public class SPD{
+	static private List<Periodo> periodos;
+	static private CatalogoDisciplinas catalogo;
+	
+	
 	public SPD() {
 		periodos = new ArrayList<Periodo>();
 		catalogo = new CatalogoDisciplinas();
@@ -40,14 +42,23 @@ public class SPD {
 		return catalogo.getCatalogo();
 	}
 	
+	public void addDisciplinasPeriodo(int periodo, String nome)throws Exception{
+		int i = catalogo.disciplinaIndice(nome);
+		
+		
+		
+		addDisciplinasPeriodo(periodo, catalogo.getCatalogo().get(i));
+	}
+	
 	public void addDisciplinasPeriodo(int periodo, Disciplina disc)throws Exception{
 		
-		if(periodos.size() < periodo + 1){
+		if(periodos.size() <= periodo ){
 			Periodo novoPerido = new Periodo();
 			periodos.add(novoPerido);
 			addDisciplinasPeriodo(periodo, disc);
 		}else{
 			periodos.get(periodo).addDisciplinas(disc);
+			disc.setAlocada();
 		}
 	}
 

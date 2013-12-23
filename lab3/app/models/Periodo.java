@@ -19,7 +19,7 @@ public class Periodo {
 			disciplinas.add(disc);
 			totalCreditos += disc.getCreditos();
 		}else{
-			throw new Exception("Total de créditos excedito");
+			throw new LimitesExcedidosException();
 		}
 	}
 

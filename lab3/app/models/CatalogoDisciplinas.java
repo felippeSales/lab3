@@ -68,9 +68,9 @@ public class CatalogoDisciplinas {
 		todasDisciplinas.add(new Disciplina("Optativa 9", 4));
 		todasDisciplinas.add(new Disciplina("Optativa 10", 4));
 		todasDisciplinas.add(new Disciplina("Optativa 11", 4));
-		
+
 	}
-	 
+
 	private List<String> listaDePreRequisitos(String disciplinas) {
 		List<String> listaDePreRequisitos = new ArrayList<String>();
 		String[] aux = disciplinas.split(", ");
@@ -78,6 +78,17 @@ public class CatalogoDisciplinas {
 			listaDePreRequisitos.add(disciplina);
 		}
 		return listaDePreRequisitos;
+	}
+
+	public int disciplinaIndice(String nome){
+		int result = -1;
+		for(int i = 0; i < todasDisciplinas.size(); i ++){
+			if(todasDisciplinas.get(i).getNome().equals(nome)){
+				result = i;				
+			}
+		}
+		
+		return result;
 	}
 
 
