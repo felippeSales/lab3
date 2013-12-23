@@ -7,11 +7,13 @@ public class Disciplina {
 
 	private String nome;
 	private int creditos;
-	private List<Disciplina> preRequisitos;
+	private List<String> preRequisitos;
+	private boolean alocada;
 
 	public Disciplina(String nome, int creditos) {
 		this.nome = nome;
 		this.creditos = creditos;
+		alocada = false;
 	}
 
 	public String getNome() {
@@ -22,14 +24,18 @@ public class Disciplina {
 		return creditos;
 	}
 	
-	public void addPreRequisito(Disciplina pr){
+	public void addPreRequisito(String pr){
 		preRequisitos.add(pr);
 	}
 
-	public List<Disciplina> getPreRequisitos() {
+	public List<String> getPreRequisitos() {
 		return preRequisitos;
 	}
 
+	public boolean getAlocada(){
+		return alocada;
+	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -37,8 +43,15 @@ public class Disciplina {
 	public void setCreditos(int creditos) {
 		this.creditos = creditos;
 	}
+	
+	
+	
+	public void setAlocada(){
+		alocada = (alocada == false) ? true : false;
+		
+	}
 
-	public void setPreRequisitos(List<Disciplina> preRequisitos) {
+	public void setPreRequisitos(List<String> preRequisitos) {
 		this.preRequisitos = preRequisitos;
 	}
 

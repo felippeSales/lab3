@@ -64,10 +64,12 @@
            
         <div id="disciplinas">
                 @for(disciplina <- catalogo){
+                @if(disciplina.getAlocada() != true){
                 <div class="disciplina float-left">
                         <nome>@disciplina.getNome()</nome><br/>
                         <descricao>@disciplina.getCreditos() créditos</descricao>
                 </div>
+                }
                 }        
         </div>
 </div>

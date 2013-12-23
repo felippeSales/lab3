@@ -1,11 +1,14 @@
 package models;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CatalogoDisc {
+// CREATOR: Guarda objetos do tipo Disciplina
+public class CatalogoDisciplinas {
+
 	private List<Disciplina> todasDisciplinas = new ArrayList<Disciplina>();
 
-	public CatalogoDisc() {
+	public CatalogoDisciplinas() {
 		todasDisciplinas.add(new Disciplina("Programaçãoo I", 4));
 		todasDisciplinas.add(new Disciplina("Lab. de Programação I", 4));
 		todasDisciplinas.add(new Disciplina("Introdução a Computação", 4));
@@ -25,9 +28,9 @@ public class CatalogoDisc {
 		todasDisciplinas.add(new Disciplina("Fundamentos de Física Moderna", 4));
 		todasDisciplinas.add(new Disciplina("Gerência da Informação", 4));
 		todasDisciplinas.add(new Disciplina("Lab. de Estruturas de Dados e Algoritmos", 4));
-		
+
 	}
-	
+
 	public List<Disciplina> getCatalogo(){
 		return todasDisciplinas;
 	}
