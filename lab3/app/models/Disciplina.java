@@ -9,11 +9,20 @@ public class Disciplina {
 	private int creditos;
 	private List<String> preRequisitos;
 	private boolean alocada;
-
+	
+	// Contrutor para disciplinas sem preRequisitos
 	public Disciplina(String nome, int creditos) {
 		this.nome = nome;
 		this.creditos = creditos;
 		alocada = false;
+	}
+	
+	// Contrutor para disciplinas com preRequisitos
+	public Disciplina(String nome, int creditos, List<String> preRequesitos) {
+		this.nome = nome;
+		this.creditos = creditos;
+		alocada = false;
+		this.preRequisitos= preRequesitos;
 	}
 
 	public String getNome() {
