@@ -8,18 +8,17 @@ import org.junit.Before;
 
 public class US1test {
 
-	SPD sistema = new SPD();
+	SPD sistema;
 	
 	@Before
 	public void setUp(){
-		
-		
+		sistema = new SPD();
 	}
 			
 	@Test
 	public void deveTerOprimeiroPeriodo() {
 		assert(this.sistema.getPeriodos().size() >= 1);
-		assertTrue(sistema.getPeriodos().get(0).getDisciplinas().contains(new Disciplina("Programacao I", 4)));
+		assertTrue(sistema.getPeriodos().get(0).getDisciplinas().contains(new Disciplina("Programação I", 4)));
 		assertTrue(sistema.getPeriodos().get(0).getDisciplinas().contains(new Disciplina("Álgebra Vetorial e Geometria Analítica", 4)));
 		assertTrue(sistema.getPeriodos().get(0).getDisciplinas().contains(new Disciplina("Cálculo I", 4)));
 		assertTrue(sistema.getPeriodos().get(0).getDisciplinas().contains(new Disciplina("Leitura e Produção de Textos", 4)));

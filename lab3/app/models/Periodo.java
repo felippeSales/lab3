@@ -14,13 +14,15 @@ public class Periodo {
 		disciplinas = new ArrayList<Disciplina>();
 	}
 	
-	public void addDisciplinas(Disciplina disc) {
-		disciplinas.add(disc);
-		totalCreditos += disc.getCreditos();
+	public void addDisciplinas(Disciplina disc) throws Exception{
+		if(totalCreditos + disc.getCreditos() <= 28){
+			disciplinas.add(disc);
+			totalCreditos += disc.getCreditos();
+		}else{
+			throw new Exception("Total de créditos excedito");
+		}
 	}
-	
-	
-	//CREATOR: a classe Periodo guarda objetos do tipo Disciplina
+
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
@@ -32,8 +34,5 @@ public class Periodo {
 	public int getTotalCreditos(){
 		return totalCreditos;
 	}
-	
-	
 
-		
 }
