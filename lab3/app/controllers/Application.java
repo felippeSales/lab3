@@ -17,8 +17,6 @@ public class Application extends Controller {
 	}
 	
 	public static Result alocacao(){
-		return ok(views.html.index.render(sistema.getPeriodos()));
-		
+		return ok(views.html.index.render(sistema.getPeriodos(), sistema.getCatalogoDisc()));	
 	}
-
 }

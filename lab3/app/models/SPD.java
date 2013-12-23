@@ -30,5 +30,9 @@ public class SPD {
 	public void setPeriodos(List<Periodo> periodos) {
 		this.periodos = periodos;
 	}
+	
+	public List<Disciplina> getCatalogoDisc(){
+		return catalogo.getCatalogo();
+	}
 
 }

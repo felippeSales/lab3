@@ -1,4 +1,4 @@
-@(periodos: List[Periodo])
+@(periodos: List[Periodo], catalogo: List[Disciplina])
 
 @import helper._ 
 
@@ -43,7 +43,7 @@
                                 
                         }
                         <div class ="periodo"><nome> Total de creditos</nome><br/>
-                        <descricao>@periodo.getTotalCreditos() crÃ©ditos</descricao></div>
+                        <descricao>@periodo.getTotalCreditos() creditos</descricao></div>
                         
                        </div>
                 }
@@ -61,38 +61,12 @@
         </div>
         <br/>        
         <div id="disciplinas">
+                @for(disciplina <- catalogo){
                 <div class="disciplina float-left">
-                        <nome>Disciplina 7</nome><br/>
-                        <descricao>20 creditos</descricao>
+                        <nome>@disciplina.getNome()</nome><br/>
+                        <descricao>@disciplina.getCreditos() creditos</descricao>
                 </div>
-                <div class="disciplina float-left">
-                        <nome>Disciplina 8</nome><br/>
-                        <descricao>1 credito</descricao>
-                </div>
-                                <div class="disciplina float-left">
-                        <nome>Disciplina 9</nome><br/>
-                        <descricao>20 creditos</descricao>
-                </div>
-                <div class="disciplina float-left">
-                        <nome>Disciplina 10</nome><br/>
-                        <descricao>1 credito</descricao>
-                </div>
-                                <div class="disciplina float-left">
-                        <nome>Disciplina 11</nome><br/>
-                        <descricao>20 creditos</descricao>
-                </div>
-                <div class="disciplina float-left">
-                        <nome>Disciplina 12</nome><br/>
-                        <descricao>1 credito</descricao>
-                </div>
-                                <div class="disciplina float-left">
-                        <nome>Disciplina 13</nome><br/>
-                        <descricao>20 creditos</descricao>
-                </div>
-                <div class="disciplina float-left">
-                        <nome>Disciplina 14</nome><br/>
-                        <descricao>1 credito</descricao>
-                </div>        
+                }        
         </div>
 </div>
 }
