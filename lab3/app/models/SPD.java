@@ -17,14 +17,15 @@ public class SPD {
 // Nao trata a excessao pq o primeiro periodo e sempre default
 	private void setPrimeiroPeriodo() {
 		Periodo primeiroPeriodo = new Periodo();
+
 		try{
 			for (int i = 0; i < 6; i++) {
 				primeiroPeriodo.addDisciplinas(catalogo.getCatalogo().get(i));
+				catalogo.getCatalogo().get(i).setAlocada();
 			}
 			periodos.add(primeiroPeriodo);
 			
 		}catch(Exception e){}
-
 	}
 
 	public List<Periodo> getPeriodos() {
