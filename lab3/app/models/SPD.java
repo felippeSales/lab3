@@ -92,21 +92,22 @@ public class SPD {
 			Periodo novoPerido = new Periodo();
 			periodos.add(novoPerido);
 			addDisciplinasPeriodo(periodo, disc);
-		}
-		int numPr = disc.getPreRequisitos().size(); //numpr significa o numero de pre-requisitos de cada disciplina
-		for(int i = 0; i < periodo; i++){
-			for(int j = 0; j < periodos.get(i).getDisciplinas().size(); j++){
-				if(disc.getPreRequisitos().contains(periodos.get(i).getDisciplinas().get(j).getNome())){
-					numPr--;
+		}else{
+			int numPr = disc.getPreRequisitos().size(); //numpr significa o numero de pre-requisitos de cada disciplina
+			for(int i = 0; i < periodo; i++){
+				for(int j = 0; j < periodos.get(i).getDisciplinas().size(); j++){
+					if(disc.getPreRequisitos().contains(periodos.get(i).getDisciplinas().get(j).getNome())){
+						numPr--;
+					}
 				}
 			}
-		}
- 		if(numPr == 0){
+			if(numPr == 0){
 				periodos.get(periodo).addDisciplina(disc);
 				disc.setAlocada();
-		}else{
-			throw new PreRequisitosInsuficientesException();
-		}
+			}else{
+				throw new PreRequisitosInsuficientesException();
+			}
+		}	
 	}
 
 	public void removeDisciplinaPeriodo(int periodo, String nome) {
