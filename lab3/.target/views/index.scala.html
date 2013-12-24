@@ -47,7 +47,7 @@
            <label>Período:</label>
 	                                
 	              <select name="periodo">
-		             <option value="1">1</option>
+		             
 		             <option value="2">2</option>
 		             <option value="3">3</option>
 		             <option value="4">4</option>
@@ -74,23 +74,35 @@
          <mensagem-erro> @erro  </mensagem-erro>
           
         <div id="colunas">
+        	
         		
                 @for((periodo, i) <- periodos.zipWithIndex) {
            			 <div id="periodo_@(i + 1)" class="coluna" align='center'>
            			 <nome-periodo>Período @(1 + periodos.indexOf(periodo))</nome-periodo>
-		            @for(disciplina <- periodo.getDisciplinas()){
-		                <div class="disciplina" id="@disciplina.getNome()">
-		                    <nome>@disciplina.getNome() <form method="post" action="@routes.Application.removeDisciplinaPeriodo()">
-                                                <input type="hidden" name="nome" value="@disciplina.getNome()"/>
-                                                <input type="hidden" name="periodo" value="@i"/>
-                                        		
-                                              	<input type="submit" value="X">
-                                        		
-                                        </form></nome>
-                                        <descricao>@disciplina.getCreditos() creditos</descricao>
-		                </div>
-            			}
-            			
+           			 @if( i !=  0){
+			            @for(disciplina <- periodo.getDisciplinas()){
+			                <div class="disciplina" id="@disciplina.getNome()">
+			                    <nome>@disciplina.getNome() <form method="post" action="@routes.Application.removeDisciplinaPeriodo()">
+	                                                <input type="hidden" name="nome" value="@disciplina.getNome()"/>
+	                                                <input type="hidden" name="periodo" value="@i"/>
+	                                        		
+	                                              	<input type="submit" value="X">
+	                                        		
+	                                        </form></nome>
+	                                        <descricao>@disciplina.getCreditos() creditos</descricao>
+			                </div>
+	            		}
+            		 }else{
+            		 	@for(disciplina <- periodo.getDisciplinas()){
+			                <div class="disciplina" id="@disciplina.getNome()">
+			                    <nome>@disciplina.getNome()
+			                    <br>
+	                            <descricao>@disciplina.getCreditos() créditos</descricao>
+			                </div>
+	            		}
+            		 
+            		 
+            		 }
                         <div class ="periodo"><nome> Total de créditos</nome><br/>
                         	<descricao>@periodo.getTotalCreditos() créditos</descricao></div>
                         
