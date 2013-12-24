@@ -107,7 +107,7 @@ public class SPD {
 				disc.setAlocada();
 			}
 		}else{
-			
+			throw new PreRequisitosInsuficientesException();
 		}
 	}
 
