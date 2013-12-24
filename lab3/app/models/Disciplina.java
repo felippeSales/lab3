@@ -20,9 +20,11 @@ public class Disciplina {
 	private int periodo;
 	private int creditos;
 
-	// Information Expert: Cada disciplina é quem deve conhecer seus pre-requisitos.
+	// Information Expert: Cada disciplina é quem deve conhecer seus
+	// pre-requisitos.
 	private List<String> preRequisitos;
 	private boolean alocada;
+	private int dificuldade;
 
 	/**
 	 * Construtor para disciplinas sem preRequisitos
@@ -31,12 +33,15 @@ public class Disciplina {
 	 *            Nome da disciplina
 	 * @param creditos
 	 *            Creditos da disciplina
+	 * @param dificuldade
+	 *            Dificuldade da disciplina
 	 */
 
-	public Disciplina(String nome, int creditos) {
+	public Disciplina(String nome, int creditos, int dificuldade) {
 		setNome(nome);
 		setCreditos(creditos);
 		alocada = false;
+		this.dificuldade = dificuldade;
 		preRequisitos = new ArrayList<String>();
 	}
 
@@ -51,10 +56,15 @@ public class Disciplina {
 	 * @param preRequesitos
 	 *            Lista de String com o nome das disiciplinas que sao
 	 *            preRequesitos da disciplina inicializada
+	 * 
+	 * @param dificuldade
+	 *            Dificuldade da disciplina
 	 */
-	public Disciplina(String nome, int creditos, List<String> preRequesitos) {
+	public Disciplina(String nome, int creditos, List<String> preRequesitos,
+			int dificuldade) {
 		this.nome = nome;
 		this.creditos = creditos;
+		this.dificuldade = dificuldade;
 		alocada = false;
 		this.preRequisitos = preRequesitos;
 	}
@@ -89,6 +99,14 @@ public class Disciplina {
 	 */
 	public boolean getAlocada() {
 		return alocada;
+	}
+
+	/**
+	 * 
+	 * @return Retorna a dificuldade da disciplina
+	 */
+	public int getDificuldade() {
+		return dificuldade;
 	}
 
 	/**

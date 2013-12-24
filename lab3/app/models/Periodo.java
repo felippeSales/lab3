@@ -13,6 +13,7 @@ public class Periodo {
 	// CREATOR: Periodo eh feito de disciplinas e tem o numero total de creditos nele
 	private List<Disciplina> disciplinas;
 	private int totalCreditos = 0;
+	private double totalDificuldade = 0.0;
 
 	/**
 	 * Construtor
@@ -37,6 +38,7 @@ public class Periodo {
 		if (totalCreditos + disc.getCreditos() <= 28) {
 			disciplinas.add(disc);
 			totalCreditos += disc.getCreditos();
+			totalDificuldade += disc.getDificuldade();
 		} else {
 			throw new LimitesExcedidosException();
 		}
@@ -48,6 +50,10 @@ public class Periodo {
 
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
+	}
+	
+	public double getDificuldadeMedia(){
+		return totalDificuldade / getDisciplinas().size();
 	}
 	
 	public void rmDisciplina(String disc) {
