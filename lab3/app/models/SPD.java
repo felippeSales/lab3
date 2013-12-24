@@ -116,7 +116,7 @@ public class SPD {
 			catalogo.getCatalogo().get(i).setAlocada();
 			periodos.get(periodo).rmDisciplina(nome);
 
-			for(int j = periodo+1; j < periodos.size(); j++){
+			for(int j = periodo; j < periodos.size(); j++){
 				for(int k = 0; k < periodos.get(j).getDisciplinas().size(); k++){
 					if(periodos.get(j).getDisciplinas().get(k).getPreRequisitos().contains(nome)){
 						removeDisciplinaPeriodo(j, periodos.get(j).getDisciplinas().get(k).getNome() );
