@@ -88,24 +88,35 @@ public class SPD {
 	 */
 	public void addDisciplinasPeriodo(int periodo, Disciplina disc)
 			throws Exception {
+		int numPr = disc.getPreRequisitos().size(); //numpr significa o numero de pre-requisitos de cada disciplina
+		for(int i = 0; i < periodo; i++){
+			for(int j = 0; j < periodos.get(i).getDisciplinas().size(); j++){
+				if(disc.getPreRequisitos().contains(periodos.get(i).getDisciplinas().get(j).getNome())){
+					numPr--;
+				}
+			}
+		}
+		if(numPr == 0){
+			if (periodos.size() <= periodo) {
+				Periodo novoPerido = new Periodo();
+				periodos.add(novoPerido);
+				addDisciplinasPeriodo(periodo, disc);
 
-		if (periodos.size() <= periodo) {
-			Periodo novoPerido = new Periodo();
-			periodos.add(novoPerido);
-			addDisciplinasPeriodo(periodo, disc);
-
+			}else{
+				periodos.get(periodo).addDisciplina(disc);
+				disc.setAlocada();
+			}
 		}else{
-			periodos.get(periodo).addDisciplina(disc);
-			disc.setAlocada();
+			
 		}
 	}
 
 	public void removeDisciplinaPeriodo(int periodo, String nome) {
 		int i = catalogo.disciplinaIndice(nome);
-		
+
 		catalogo.getCatalogo().get(i).setAlocada();
 		periodos.get(periodo).rmDisciplina(nome);
-		
+
 		for(int j = periodo+1; j < periodos.size(); j++){
 			for(int k = 0; k < periodos.get(j).getDisciplinas().size(); k++){
 				if(periodos.get(j).getDisciplinas().get(k).getPreRequisitos().contains(nome)){
@@ -113,7 +124,7 @@ public class SPD {
 				}
 			}
 		}
-		
+
 	}
 
 }
