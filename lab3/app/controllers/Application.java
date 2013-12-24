@@ -38,7 +38,7 @@ public class Application extends Controller {
 			
 			String aux = "";
 			for(int i = 0; i < sistema.getPeriodos().size(); i++){
-				if(sistema.getPeriodos().get(i).getTotalCreditos() <= 14 && sistema.getPeriodos().get(i).getTotalCreditos() != 0){
+				if(sistema.getPeriodos().get(i).getTotalCreditos() <= 14 ){
 					if( aux.equals("")){
 						aux += "Quantidade de créditos insuficientes no: ";
 					}
@@ -72,7 +72,7 @@ public class Application extends Controller {
 		
 		String aux = "";
 		for(int i = 0; i < sistema.getPeriodos().size(); i++){
-			if(sistema.getPeriodos().get(i).getTotalCreditos() <= 14 && sistema.getPeriodos().get(i).getTotalCreditos() != 0){
+			if(sistema.getPeriodos().get(i).getTotalCreditos() <= 14 ){
 				if( aux.equals("")){
 					aux += "Quantidade de créditos insuficientes no: ";
 				}
