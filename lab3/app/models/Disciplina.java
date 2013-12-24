@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import play.data.*;
@@ -38,6 +39,7 @@ public class Disciplina {
 		setNome(nome);
 		setCreditos(creditos);
 		alocada = false;
+		preRequisitos = new ArrayList<String>();
 	}
 
 	/**
