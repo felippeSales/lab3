@@ -88,6 +88,11 @@ public class SPD {
 	 */
 	public void addDisciplinasPeriodo(int periodo, Disciplina disc)
 			throws Exception {
+		if (periodos.size() <= periodo) {
+			Periodo novoPerido = new Periodo();
+			periodos.add(novoPerido);
+			addDisciplinasPeriodo(periodo, disc);
+		}
 		int numPr = disc.getPreRequisitos().size(); //numpr significa o numero de pre-requisitos de cada disciplina
 		for(int i = 0; i < periodo; i++){
 			for(int j = 0; j < periodos.get(i).getDisciplinas().size(); j++){
@@ -96,16 +101,9 @@ public class SPD {
 				}
 			}
 		}
-		if(numPr == 0){
-			if (periodos.size() <= periodo) {
-				Periodo novoPerido = new Periodo();
-				periodos.add(novoPerido);
-				addDisciplinasPeriodo(periodo, disc);
-
-			}else{
+ 		if(numPr == 0){
 				periodos.get(periodo).addDisciplina(disc);
 				disc.setAlocada();
-			}
 		}else{
 			throw new PreRequisitosInsuficientesException();
 		}
