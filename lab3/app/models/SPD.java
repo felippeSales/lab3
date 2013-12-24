@@ -96,7 +96,6 @@ public class SPD {
 				}
 			}
 		}
-		System.out.println(numPr);
 		if(numPr == 0){
 			if (periodos.size() <= periodo) {
 				Periodo novoPerido = new Periodo();
