@@ -7,8 +7,6 @@ import java.util.List;
 /**
  * Classe que representa os períodos que o aluno irá alocar disciplinas
  * 
- * @author Felipe, Isabelly e Rodrigo (SI - 2013.2)
- * 
  */
 public class Periodo {
 

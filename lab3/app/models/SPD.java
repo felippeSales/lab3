@@ -6,8 +6,6 @@ import java.util.List;
 /**
  * Classe responsável pelo controle do sistema
  * 
- * @author Felipe, Isabelly e Rodrigo (SI - 2013.2)
- * 
  */
 
 // Controller: classe principal do sistema, pois ela quem dá as coordenadas para

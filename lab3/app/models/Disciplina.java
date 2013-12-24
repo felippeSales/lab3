@@ -10,8 +10,6 @@ import play.data.validation.Constraints.*;
 /**
  * Classe que representa as disciplinas a serem alocadas
  * 
- * @author Felipe, Isabelly e Rodrigo (SI - 2013.2)
- * 
  */
 
 public class Disciplina {

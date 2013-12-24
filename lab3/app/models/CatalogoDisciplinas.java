@@ -5,8 +5,6 @@ import java.util.*;
 /**
  * Classe que guarda as disciplinas do curso.
  * 
- * @author Felipe, Isabelly e Rodrigo (SI - 2013.2)
- * 
  */
 public class CatalogoDisciplinas {
 	private List<Disciplina> todasDisciplinas = new ArrayList<Disciplina>();
