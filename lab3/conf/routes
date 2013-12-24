@@ -7,7 +7,7 @@ GET     /                           controllers.Application.index()
 
 # Aplicacao
 
-
+GET		/reiniciar								controllers.Application.reiniciar()
 POST    /disciplinaPeriodo                  	controllers.Application.disciplinaPeriodo()
 POST   	/removerCadeira                         controllers.Application.removeDisciplinaPeriodo()
 
