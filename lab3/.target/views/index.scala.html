@@ -77,6 +77,7 @@
         	
         		
                 @for((periodo, i) <- periodos.zipWithIndex) {
+                	@if(periodo.getDisciplinas().size() != 0){
            			 <div id="periodo_@(i + 1)" class="coluna" align='center'>
            			 <nome-periodo>Período @(1 + periodos.indexOf(periodo))</nome-periodo>
            			 @if( i !=  0){
@@ -101,12 +102,13 @@
 			                </div>
 	            		}
             		 
-            		 
             		 }
+            		 
                         <div class ="periodo"><nome> Total de créditos</nome><br/>
                         	<descricao>@periodo.getTotalCreditos() créditos</descricao></div>
                         
                         </div>
+                    }
                 }
         
         </div>
