@@ -11,7 +11,7 @@ public class LimitesExcedidosException extends Exception{
 	private static final long serialVersionUID = 1L;
 	
 	public LimitesExcedidosException(){
-		super("Limite de créditos , no periodo,  excedido!");
+		super("Limite de créditos, no periodo, excedido!");
 	}
 	
 	/*
