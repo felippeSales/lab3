@@ -12,14 +12,14 @@ public class Application extends Controller {
 	// CONTROLER: SPD eh a classe responsavel por controlar o sistema
 
 	// Sistema de Planejamento de Disciplinas
-	static SPD sistema;
+	static Sistema sistema;
 
 	private static String erro = "";
 
 	static Form<Disciplina> disciplinaForm = Form.form(Disciplina.class);
 
 	public static Result index() {
-		sistema = new SPD();
+		sistema = new Sistema();
 		return ok(index.render(sistema.getPeriodos(),
 				sistema.getCatalogoDisc(), erro));
 	}

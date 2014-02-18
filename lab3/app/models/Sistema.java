@@ -10,14 +10,14 @@ import java.util.List;
 
 // Controller: classe principal do sistema, pois ela quem dá as coordenadas para
 // as outras.
-public class SPD {
+public class Sistema {
 	static private List<Periodo> periodos;
 	static private CatalogoDisciplinas catalogo;
 
 	/**
 	 * Construtor
 	 */
-	public SPD() {
+	public Sistema() {
 		periodos = new ArrayList<Periodo>();
 		catalogo = new CatalogoDisciplinas();
 		setPrimeiroPeriodo();
@@ -128,5 +128,6 @@ public class SPD {
 		}
 
 	}
+
 
 }
