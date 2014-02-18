@@ -9,9 +9,8 @@ import views.html.*;
 //CREATOR: a classe Periodo guarda objetos do tipo Disciplina
 public class Application extends Controller {
 
-	// CONTROLER: SPD eh a classe responsavel por controlar o sistema
+	// CONTROLER: Sistema eh a classe responsavel por controlar o sistema
 
-	// Sistema de Planejamento de Disciplinas
 	static Sistema sistema;
 
 	private static String erro = "";
