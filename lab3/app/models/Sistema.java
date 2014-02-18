@@ -29,15 +29,17 @@ public class Sistema {
 	private void setPrimeiroPeriodo() {
 		Periodo primeiroPeriodo = new Periodo();
 
-		try {
-			for (int i = 0; i < 6; i++) {
-				primeiroPeriodo.addDisciplina(catalogo.getDisciplinaPorIndice(i));
-				catalogo.getDisciplinaPorIndice(i).setAlocada();
+		for (int i = 0; i < 6; i++) {
+			Disciplina disc = catalogo.getDisciplinaPorIndice(i);
+			try {
+				primeiroPeriodo.addDisciplina(disc);
+			} catch (Exception e) {
+				// Defult
 			}
-			periodos.add(primeiroPeriodo);
-
-		} catch (Exception e) {
+			disc.setAlocada();
 		}
+		periodos.add(primeiroPeriodo);
+
 	}
 
 	/**
@@ -56,7 +58,6 @@ public class Sistema {
 		return catalogo.getCatalogo();
 	}
 
-
 	/**
 	 * Adiciona uma disciplina em um periodo pelo nome
 	 * 
@@ -65,7 +66,7 @@ public class Sistema {
 	 * @param nome
 	 *            Nome da disciplina
 	 * @throws Exception
-	 *  
+	 * 
 	 */
 	public void addDisciplinasPeriodo(int periodo, String nome)
 			throws Exception {
@@ -82,7 +83,7 @@ public class Sistema {
 	 * @param nome
 	 *            Nome da disciplina
 	 * @throws Exception
-	 *  
+	 * 
 	 */
 	public void addDisciplinasPeriodo(int periodo, Disciplina disc)
 			throws Exception {
@@ -108,10 +109,17 @@ public class Sistema {
 		}	
 	}
 
+	/**
+	 * Remove disciplina e seus preRequisitos
+	 * 
+	 * @param nome
+	 *            Nome da disciplina a ser removida
+	 */
 	public void removeDisciplinaPeriodo(String nome) {
 		int i = catalogo.disciplinaIndice(nome);
-		
-		if(catalogo.getCatalogo().get(i).getAlocada()){
+
+		if (catalogo.getDisciplina(nome).getAlocada()) {
+			Iterator<Periodo> itPeriodo = periodos.iterator();
 
 
 			catalogo.getCatalogo().get(i).setAlocada();
@@ -133,10 +141,12 @@ public class Sistema {
 
 					if(disc.getNome().equals(nome)){
 						periodo.rmDisciplina(nome);
-						
+
 						rmDisciplinaPreRequisitos(nome);
+						break;
 					}
 				}
+
 			}
 		}
 	}
@@ -163,6 +173,5 @@ public class Sistema {
 			}
 		}
 	}
-
 
 }
