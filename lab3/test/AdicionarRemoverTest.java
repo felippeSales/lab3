@@ -51,7 +51,7 @@ public class AdicionarRemoverTest {
 		assertEquals(sistema.getPeriodos().get(4).getTotalCreditos(), 4);
 		
 		try{
-			sistema.addDisciplinasPeriodo(4, "Programação I");
+			sistema.addDisciplina(4, "Programação I");
 		}catch(Exception e){			
 			System.out.println(e.getMessage());
 		}
@@ -59,7 +59,7 @@ public class AdicionarRemoverTest {
 		assertEquals(sistema.getPeriodos().get(4).getTotalCreditos(), 8);
 		
 		try{
-			sistema.addDisciplinasPeriodo(4, "Teoria dos Grafos");
+			sistema.addDisciplina(4, "Teoria dos Grafos");
 		}catch(Exception e){			
 			System.out.println(e.getMessage());
 		}
@@ -73,13 +73,13 @@ public class AdicionarRemoverTest {
 		
 			
 		try{
-			sistema.addDisciplinasPeriodo(2, "Cálculo II");
+			sistema.addDisciplina(2, "Cálculo II");
 		}catch(Exception e){			
 			System.out.println(e.getMessage());
 		}
 		
 		try{
-			sistema.addDisciplinasPeriodo(3, "Probabilidade e Estatística");
+			sistema.addDisciplina(3, "Probabilidade e Estatística");
 		}catch(Exception e){			
 			System.out.println(e.getMessage());
 		}

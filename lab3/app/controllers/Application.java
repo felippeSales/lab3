@@ -71,7 +71,7 @@ public class Application extends Controller {
 		final String nome = form.get("nome");
 		final int periodo = Integer.parseInt(form.get("periodo")) ;
 
-		sistema.removeDisciplinaPeriodo(periodo, nome);
+		sistema.removeDisciplinaPeriodo(nome);
 		
 		String aux = "";
 		for(int i = 0; i < sistema.getPeriodos().size(); i++){

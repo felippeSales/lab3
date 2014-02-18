@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -28,15 +29,17 @@ public class Sistema {
 	private void setPrimeiroPeriodo() {
 		Periodo primeiroPeriodo = new Periodo();
 
-		try {
-			for (int i = 0; i < 6; i++) {
-				primeiroPeriodo.addDisciplina(catalogo.getDisciplinaPorIndice(i));
-				catalogo.getDisciplinaPorIndice(i).setAlocada();
+		for (int i = 0; i < 6; i++) {
+			Disciplina disc = catalogo.getDisciplinaPorIndice(i);
+			try {
+				primeiroPeriodo.addDisciplina(disc);
+			} catch (Exception e) {
+				// Defult
 			}
-			periodos.add(primeiroPeriodo);
-
-		} catch (Exception e) {
+			disc.setAlocada();
 		}
+		periodos.add(primeiroPeriodo);
+
 	}
 
 	/**
@@ -55,7 +58,6 @@ public class Sistema {
 		return catalogo.getCatalogo();
 	}
 
-
 	/**
 	 * Adiciona uma disciplina em um periodo pelo nome
 	 * 
@@ -64,7 +66,7 @@ public class Sistema {
 	 * @param nome
 	 *            Nome da disciplina
 	 * @throws Exception
-	 *  
+	 * 
 	 */
 	public void addDisciplinasPeriodo(int periodo, String nome)
 			throws Exception {
@@ -81,7 +83,7 @@ public class Sistema {
 	 * @param nome
 	 *            Nome da disciplina
 	 * @throws Exception
-	 *  
+	 * 
 	 */
 	public void addDisciplinasPeriodo(int periodo, Disciplina disc)
 			throws Exception {
@@ -107,26 +109,40 @@ public class Sistema {
 		}	
 	}
 
-	public void removeDisciplinaPeriodo(int periodo, String nome) {
-		int i = catalogo.disciplinaIndice(nome);
+	/**
+	 * Remove disciplina e seus preRequisitos
+	 * 
+	 * @param nome
+	 *            Nome da disciplina a ser removida
+	 */
+	public void removeDisciplinaPeriodo(String nome) {
 
+		if (catalogo.getDisciplina(nome).getAlocada()) {
+			Iterator<Periodo> itPeriodo = periodos.iterator();
 
-		if(catalogo.getCatalogo().get(i).getAlocada()){
-			catalogo.getCatalogo().get(i).setAlocada();
-			periodos.get(periodo).rmDisciplina(nome);
+			while (itPeriodo.hasNext()) {
+				Periodo periodo = (Periodo) itPeriodo.next();
+				Iterator<Disciplina> itDisciplina = periodo.getDisciplinas()
+						.iterator();
 
-			for(int j = periodo; j < periodos.size(); j++){
-				for(int k = 0; k < periodos.get(j).getDisciplinas().size(); k++){
-					if(periodos.get(j).getDisciplinas().get(k).getPreRequisitos().contains(nome)){
-						removeDisciplinaPeriodo(j, periodos.get(j).getDisciplinas().get(k).getNome() );
-						
+				while (itDisciplina.hasNext()) {
+					Disciplina disciplina = (Disciplina) itDisciplina.next();
+
+					if (disciplina.getNome().equals(nome)) {
+						Iterator<String> preRequisito = disciplina
+								.getPreRequisitos().iterator();
+
+						while (preRequisito.hasNext()) {
+							removeDisciplinaPeriodo(preRequisito.next());
+						}
+						periodo.rmDisciplina(nome);
+						catalogo.getDisciplina(nome).setAlocada();
 					}
-
 				}
+
 			}
 		}
 
 	}
-
 
 }
