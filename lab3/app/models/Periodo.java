@@ -57,6 +57,7 @@ public class Periodo {
 	}
 	
 	public void rmDisciplina(String disc) {
+		@SuppressWarnings("rawtypes")
 		Iterator it = disciplinas.iterator();
 		
 		for(int i = 0; it.hasNext(); i++){

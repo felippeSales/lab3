@@ -3,8 +3,6 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-import play.data.*;
-
 import play.data.validation.Constraints.*;
 
 /**
