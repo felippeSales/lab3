@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import models.CatalogoDisciplinas;
 import models.Disciplina;
-import models.SPD;
+import models.Sistema;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,12 +10,12 @@ import org.junit.Test;
 
 public class US2test {
 
-	SPD sistema;
+	Sistema sistema;
 	CatalogoDisciplinas catalogo;
 
 	@Before
 	public void setUp(){
-		sistema = new SPD();
+		sistema = new Sistema();
 		catalogo = new CatalogoDisciplinas();
 		
 		
@@ -34,7 +34,7 @@ public class US2test {
 	public void deveAdicionarDisciplinas() {
 
 		try{
-			sistema.addDisciplinasPeriodo(1, new Disciplina("test",4));
+			sistema.addDisciplinasPeriodo(1, new Disciplina("test",4,0));
 		}catch(Exception e){			
 			System.out.println(e.getMessage());
 		}
@@ -43,7 +43,7 @@ public class US2test {
 
 
 		try{
-			sistema.addDisciplinasPeriodo(4, new Disciplina("test",4));
+			sistema.addDisciplinasPeriodo(4, new Disciplina("test",4 , 0));
 		}catch(Exception e){			
 			System.out.println(e.getMessage());
 		}
@@ -87,7 +87,7 @@ public class US2test {
 	public void naoDeveAdiconarDisciplina(){
 		try{
 			for(int i = 0; i < 9; i++){
-				sistema.addDisciplinasPeriodo(1, new Disciplina("test",4));
+				sistema.addDisciplinasPeriodo(1, new Disciplina("test",4 , 0));
 			}			
 		}catch(Exception e){
 			assertEquals(e.getMessage(), "Limite de créditos , no periodo,  excedido!");
