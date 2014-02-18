@@ -47,7 +47,7 @@ public class Periodo {
 	/**
 	 * @return Retorna a lista de disciplinas do período
 	 */
-
+	
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}

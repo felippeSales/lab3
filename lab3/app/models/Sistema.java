@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -107,25 +108,60 @@ public class Sistema {
 		}	
 	}
 
-	public void removeDisciplinaPeriodo(int periodo, String nome) {
+	public void removeDisciplinaPeriodo(String nome) {
 		int i = catalogo.disciplinaIndice(nome);
-
-
+		
 		if(catalogo.getCatalogo().get(i).getAlocada()){
+
+
 			catalogo.getCatalogo().get(i).setAlocada();
-			periodos.get(periodo).rmDisciplina(nome);
 
-			for(int j = periodo; j < periodos.size(); j++){
-				for(int k = 0; k < periodos.get(j).getDisciplinas().size(); k++){
-					if(periodos.get(j).getDisciplinas().get(k).getPreRequisitos().contains(nome)){
-						removeDisciplinaPeriodo(j, periodos.get(j).getDisciplinas().get(k).getNome() );
+			Iterator<Periodo> itPeriodos = periodos.iterator();
+			Iterator<Disciplina> itDisciplinas;
+
+			Disciplina disc;
+			Periodo periodo;
+
+			while( itPeriodos.hasNext()){
+				periodo =  (Periodo) itPeriodos.next();
+
+				itDisciplinas =  periodo.getDisciplinas().iterator();
+
+				while(itDisciplinas.hasNext()){
+
+					disc = itDisciplinas.next();
+
+					if(disc.getNome().equals(nome)){
+						periodo.rmDisciplina(nome);
 						
+						rmDisciplinaPreRequisitos(nome);
 					}
-
 				}
 			}
 		}
+	}
 
+	private void rmDisciplinaPreRequisitos(String nome){
+		Iterator<Periodo> itPeriodos = periodos.iterator();
+		Iterator<Disciplina> itDisciplinas;
+
+		Disciplina disc;
+		Periodo periodo;
+
+		while( itPeriodos.hasNext()){
+			periodo =  (Periodo) itPeriodos.next();
+
+			itDisciplinas =  periodo.getDisciplinas().iterator();
+
+			while(itDisciplinas.hasNext()){
+
+				disc = itDisciplinas.next();
+
+				if(disc.getPreRequisitos().contains(nome)){
+					removeDisciplinaPeriodo(disc.getNome());
+				}
+			}
+		}
 	}
 
 
