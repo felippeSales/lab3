@@ -30,8 +30,8 @@ public class Sistema {
 
 		try {
 			for (int i = 0; i < 6; i++) {
-				primeiroPeriodo.addDisciplina(catalogo.getCatalogo().get(i));
-				catalogo.getCatalogo().get(i).setAlocada();
+				primeiroPeriodo.addDisciplina(catalogo.getDisciplinaPorIndice(i));
+				catalogo.getDisciplinaPorIndice(i).setAlocada();
 			}
 			periodos.add(primeiroPeriodo);
 
@@ -70,8 +70,7 @@ public class Sistema {
 			throws Exception {
 		int i = catalogo.disciplinaIndice(nome);
 
-
-		addDisciplinasPeriodo(periodo, catalogo.getCatalogo().get(i));
+		addDisciplinasPeriodo(periodo, catalogo.getDisciplinaPorIndice(i));
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class Sistema {
 			periodos.add(novoPerido);
 			addDisciplinasPeriodo(periodo, disc);
 		}else{
-			int numPr = disc.getPreRequisitos().size(); //numpr significa o numero de pre-requisitos de cada disciplina
+			int numPr = disc.getNumPreRequisitos(); //numpr significa o numero de pre-requisitos de cada disciplina
 			for(int i = 0; i < periodo; i++){
 				for(int j = 0; j < periodos.get(i).getDisciplinas().size(); j++){
 					if(disc.getPreRequisitos().contains(periodos.get(i).getDisciplinas().get(j).getNome())){

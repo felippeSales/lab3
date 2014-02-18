@@ -219,4 +219,14 @@ public class CatalogoDisciplinas {
 	public List<Disciplina> getCatalogo() {
 		return todasDisciplinas;
 	}
+	
+	/**
+	 * 
+	 * @param i
+	 * @return Retorna a disciplina com indice i do catalogo
+	 */
+	public Disciplina getDisciplinaPorIndice(int i){
+		return todasDisciplinas.get(i);
+	}
+	
 }
