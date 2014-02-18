@@ -56,20 +56,29 @@ public class Periodo {
 		return totalDificuldade / getDisciplinas().size();
 	}
 	
+	
+	/**
+	 * Remove a disciplina do período
+	 * 
+	 * @param disc
+	 *            Disciplina a ser removida
+	 *
+	 */
+	
 	public void rmDisciplina(String disc) {
 		@SuppressWarnings("rawtypes")
 		Iterator it = disciplinas.iterator();
 		
-		for(int i = 0; it.hasNext(); i++){
-			if(disciplinas.get(i).getNome().equals(disc)){
-				totalCreditos -= disciplinas.get(i).getCreditos();
-						
-				disciplinas.remove(i);
+		Disciplina temp;
+		while(it.hasNext()){
+			temp = (Disciplina) it.next(); 
+			
+			if(temp.getNome().equals(disc)){
+				totalCreditos -= temp.getCreditos();
+				it.remove();
 				break;
 			}
 		}
-		
-		
 	}
 
 	/**
