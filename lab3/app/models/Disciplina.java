@@ -90,6 +90,15 @@ public class Disciplina {
 	public List<String> getPreRequisitos() {
 		return preRequisitos;
 	}
+	
+	/**
+	 * Information Expert
+	 * A classe disciplina é que tem que saber a quantidade de pré-requisitos
+	 * @return numero de pré-requisitos
+	 */
+	public int getNumPreRequisitos(){
+		return preRequisitos.size();
+	}
 
 	/**
 	 * 
