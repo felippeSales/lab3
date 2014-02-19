@@ -119,8 +119,6 @@ public class Sistema {
 		int i = catalogo.disciplinaIndice(nome);
 
 		if (catalogo.getDisciplina(nome).getAlocada()) {
-			Iterator<Periodo> itPeriodo = periodos.iterator();
-
 
 			catalogo.getCatalogo().get(i).setAlocada();
 
@@ -130,42 +128,39 @@ public class Sistema {
 			Disciplina disc;
 			Periodo periodo;
 
-			while( itPeriodos.hasNext()){
+			while( itPeriodos.hasNext() ){
 				periodo =  (Periodo) itPeriodos.next();
 
-				itDisciplinas =  periodo.getDisciplinas().iterator();
+				if(periodo.getTotalCreditos() != 0){
+					itDisciplinas =  periodo.getDisciplinas().iterator();
 
-				while(itDisciplinas.hasNext()){
+					while(itDisciplinas.hasNext()){
 
-					disc = itDisciplinas.next();
+						disc = itDisciplinas.next();
 
-					if(disc.getNome().equals(nome)){
-						periodo.rmDisciplina(nome);
+						if(disc.getNome().equals(nome)){
+							periodo.rmDisciplina(nome);
 
-						rmDisciplinaPreRequisitos(nome);
-						break;
+							rmDisciplinaPreRequisitos(nome);
+							break;
+						}
 					}
 				}
-
 			}
 		}
 	}
 
 	private void rmDisciplinaPreRequisitos(String nome){
-		Iterator<Periodo> itPeriodos = periodos.iterator();
-		Iterator<Disciplina> itDisciplinas;
-
-		Disciplina disc;
 		Periodo periodo;
+		Disciplina disc;
 
-		while( itPeriodos.hasNext()){
-			periodo =  (Periodo) itPeriodos.next();
 
-			itDisciplinas =  periodo.getDisciplinas().iterator();
+		for(int j = 0; j < periodos.size(); j++ ) {
+			periodo =  periodos.get(j);
+			
+			for(int i = 0 ; i < periodo.getDisciplinas().size(); i++){
 
-			while(itDisciplinas.hasNext()){
-
-				disc = itDisciplinas.next();
+				disc = periodo.getDisciplinas().get(i);
 
 				if(disc.getPreRequisitos().contains(nome)){
 					removeDisciplinaPeriodo(disc.getNome());
@@ -175,3 +170,4 @@ public class Sistema {
 	}
 
 }
+	
