@@ -1,10 +1,11 @@
 import static org.junit.Assert.*;
 
 import models.Disciplina;
-import models.Sistema;
 
 import org.junit.Test;
 import org.junit.Before;
+
+import controllers.Sistema;
 
 public class US1test {
 

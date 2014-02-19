@@ -2,10 +2,11 @@ import static org.junit.Assert.*;
 
 import models.CatalogoDisciplinas;
 import models.Disciplina;
-import models.Sistema;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import controllers.Sistema;
 
 
 public class AdicionarRemoverTest {
