@@ -69,8 +69,7 @@ public class Application extends Controller {
 
 		final DynamicForm form = formDisciplina.bindFromRequest();
 		final String nome = form.get("nome");
-		final int periodo = Integer.parseInt(form.get("periodo")) ;
-
+		
 		sistema.removeDisciplinaPeriodo(nome);
 		
 		String aux = "";

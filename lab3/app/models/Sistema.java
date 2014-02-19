@@ -150,10 +150,17 @@ public class Sistema {
 		}
 	}
 
+	
+	/**
+	 * Verifica se a disciplina e prerequisito de alguma, se sim a remove
+	 * usando o metodo removeDisciplinaPeriodo
+	 * 
+	 * @param nome
+	 *            Nome da disciplina
+	 */
 	private void rmDisciplinaPreRequisitos(String nome){
 		Periodo periodo;
 		Disciplina disc;
-
 
 		for(int j = 0; j < periodos.size(); j++ ) {
 			periodo =  periodos.get(j);
