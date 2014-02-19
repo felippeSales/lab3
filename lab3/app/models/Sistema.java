@@ -12,6 +12,8 @@ import java.util.List;
 // Controller: classe principal do sistema, pois ela quem dá as coordenadas para
 // as outras.
 public class Sistema {
+	
+	//CREATOR: Ele eh formado por periodos
 	static private List<Periodo> periodos;
 	static private CatalogoDisciplinas catalogo;
 
@@ -58,6 +60,8 @@ public class Sistema {
 		return catalogo.getCatalogo();
 	}
 
+	
+	//INFORMATION EXPERT: Sistema possui a lista de periodos e conhece o catalogo
 	/**
 	 * Adiciona uma disciplina em um periodo pelo nome
 	 * 
@@ -109,6 +113,8 @@ public class Sistema {
 		}	
 	}
 
+	
+	//INFORMATION EXPERT: Sistema possui a lista de periodos e conhece o catalogo
 	/**
 	 * Remove disciplina e seus preRequisitos
 	 * 
