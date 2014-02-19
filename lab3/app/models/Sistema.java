@@ -122,35 +122,30 @@ public class Sistema {
 
 			catalogo.getCatalogo().get(i).setAlocada();
 
-			Iterator<Periodo> itPeriodos = periodos.iterator();
-			Iterator<Disciplina> itDisciplinas;
-
 			Disciplina disc;
 			Periodo periodo;
 
-			while( itPeriodos.hasNext() ){
-				periodo =  (Periodo) itPeriodos.next();
+			for(int j = 0; j < periodos.size(); j++){
+				periodo =  periodos.get(j);
 
-				if(periodo.getTotalCreditos() != 0){
-					itDisciplinas =  periodo.getDisciplinas().iterator();
+				for(int k = 0; k < periodo.getDisciplinas().size(); k++){
 
-					while(itDisciplinas.hasNext()){
+					disc = periodo.getDisciplinas().get(k);
 
-						disc = itDisciplinas.next();
+					if(disc.getNome().equals(nome)){
+						periodo.rmDisciplina(nome);
 
-						if(disc.getNome().equals(nome)){
-							periodo.rmDisciplina(nome);
-
-							rmDisciplinaPreRequisitos(nome);
-							break;
-						}
+						j = 0;
+						k = 0;
+						rmDisciplinaPreRequisitos(nome);
 					}
 				}
+
 			}
 		}
 	}
 
-	
+
 	/**
 	 * Verifica se a disciplina e prerequisito de alguma, se sim a remove
 	 * usando o metodo removeDisciplinaPeriodo
@@ -164,17 +159,19 @@ public class Sistema {
 
 		for(int j = 0; j < periodos.size(); j++ ) {
 			periodo =  periodos.get(j);
-			
+
 			for(int i = 0 ; i < periodo.getDisciplinas().size(); i++){
 
 				disc = periodo.getDisciplinas().get(i);
 
 				if(disc.getPreRequisitos().contains(nome)){
+					j = 0;
+					i = 0;
 					removeDisciplinaPeriodo(disc.getNome());
+					
 				}
 			}
 		}
 	}
 
 }
-	
