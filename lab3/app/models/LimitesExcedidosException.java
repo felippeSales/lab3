@@ -13,14 +13,5 @@ public class LimitesExcedidosException extends Exception{
 	public LimitesExcedidosException(){
 		super("Limite de créditos, no periodo, excedido!");
 	}
-	
-	/*
-	private String message = "Limite de créditos , no periodo,  excedido!";
-	
-	public String getMessage(){
-		return this.message;
-	}
-	*/
-
 }
 

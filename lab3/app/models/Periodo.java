@@ -48,6 +48,15 @@ public class Periodo {
 		return disciplinas;
 	}
 	
+	/**
+	 * INFORMATION EXPERT: Periodo deve saber quantas disciplinas ele tem.
+	 * @return
+	 */
+	
+	public int numeroDisciplinas(){
+		return disciplinas.size();
+	}
+	
 	// INFORMATION EXPERT: Periodo tem todas as disciplinas, logo ele pode calcular a dificuldade total
 	public int getDificuldadeTotal(){
 		int soma = 0;
