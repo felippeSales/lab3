@@ -20,7 +20,6 @@ public class Periodo {
 		disciplinas = new ArrayList<Disciplina>();
 	}
 
-
 	/**
 	 * Adiciona disciplinas no período
 	 * 
@@ -43,47 +42,53 @@ public class Periodo {
 	/**
 	 * @return Retorna a lista de disciplinas do período
 	 */
-	
+
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
-	
+
 	/**
 	 * INFORMATION EXPERT: Periodo deve saber quantas disciplinas ele tem.
+	 * 
 	 * @return
 	 */
-	
-	public int numeroDisciplinas(){
+
+	public int numeroDisciplinas() {
 		return disciplinas.size();
 	}
-	
-	// INFORMATION EXPERT: Periodo tem todas as disciplinas, logo ele pode calcular a dificuldade total
-	public int getDificuldadeTotal(){
+
+	// INFORMATION EXPERT: Periodo tem todas as disciplinas, logo ele pode
+	// calcular a dificuldade total
+	/**
+	 * 
+	 * @return Retorna a soma de dificuldades do periodo
+	 */
+	public int getDificuldadeTotal() {
 		int soma = 0;
-		for (int i = 0; i < disciplinas.size(); i++){
+		for (int i = 0; i < disciplinas.size(); i++) {
 			soma += disciplinas.get(i).getDificuldade();
 		}
 		return soma;
 	}
-	
+
 	// INFORMATION EXPERT: Periodo e formado por disciplinas
 	/**
 	 * Remove a disciplina do período
 	 * 
 	 * @param disc
 	 *            Disciplina a ser removida
-	 *
+	 * 
 	 */
-	
+
 	public void rmDisciplina(String disc) {
 		@SuppressWarnings("rawtypes")
 		Iterator it = disciplinas.iterator();
-		
+
 		Disciplina temp;
-		while(it.hasNext()){
-			temp = (Disciplina) it.next(); 
-			
-			if(temp.getNome().equals(disc)){
+		while (it.hasNext()) {
+			temp = (Disciplina) it.next();
+
+			if (temp.getNome().equals(disc)) {
 				totalCreditos -= temp.getCreditos();
 				it.remove();
 				break;
@@ -91,12 +96,13 @@ public class Periodo {
 		}
 	}
 
-	// INFORMATION EXPERT: Periodo tem todas as disciplinas, logo ele pode calcular o total de creditos
+	// INFORMATION EXPERT: Periodo tem todas as disciplinas, logo ele pode
+	// calcular o total de creditos
 	/**
 	 * 
 	 * @return Retorna o total de creditos ja alocados do periodo
 	 */
-	
+
 	public int getTotalCreditos() {
 		return totalCreditos;
 	}
