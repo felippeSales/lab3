@@ -116,65 +116,33 @@ public class Sistema {
 	 *            Nome da disciplina a ser removida
 	 */
 	public void removeDisciplinaPeriodo(String nome) {
-		int i = catalogo.disciplinaIndice(nome);
 
 		if (catalogo.getDisciplina(nome).getAlocada()) {
+			Iterator<Periodo> itPeriodo = periodos.iterator();
 
-			catalogo.getCatalogo().get(i).setAlocada();
+			while (itPeriodo.hasNext()) {
+				Periodo periodo = (Periodo) itPeriodo.next();
+				Iterator<Disciplina> itDisciplina = periodo.getDisciplinas()
+						.iterator();
 
-			Iterator<Periodo> itPeriodos = periodos.iterator();
-			Iterator<Disciplina> itDisciplinas;
+				while (itDisciplina.hasNext()) {
+					Disciplina disciplina = (Disciplina) itDisciplina.next();
 
-			Disciplina disc;
-			Periodo periodo;
+					if (disciplina.getNome().equals(nome)) {
+						Iterator<String> preRequisito = disciplina
+								.getPreRequisitos().iterator();
 
-			while( itPeriodos.hasNext() ){
-				periodo =  (Periodo) itPeriodos.next();
-
-				if(periodo.getTotalCreditos() != 0){
-					itDisciplinas =  periodo.getDisciplinas().iterator();
-
-					while(itDisciplinas.hasNext()){
-
-						disc = itDisciplinas.next();
-
-						if(disc.getNome().equals(nome)){
-							periodo.rmDisciplina(nome);
-
-							rmDisciplinaPreRequisitos(nome);
-							break;
+						while (preRequisito.hasNext()) {
+							removeDisciplinaPeriodo(preRequisito.next());
 						}
+						periodo.rmDisciplina(nome);
+						catalogo.getDisciplina(nome).setAlocada();
 					}
 				}
+
 			}
 		}
-	}
 
-	
-	/**
-	 * Verifica se a disciplina e prerequisito de alguma, se sim a remove
-	 * usando o metodo removeDisciplinaPeriodo
-	 * 
-	 * @param nome
-	 *            Nome da disciplina
-	 */
-	private void rmDisciplinaPreRequisitos(String nome){
-		Periodo periodo;
-		Disciplina disc;
-
-		for(int j = 0; j < periodos.size(); j++ ) {
-			periodo =  periodos.get(j);
-			
-			for(int i = 0 ; i < periodo.getDisciplinas().size(); i++){
-
-				disc = periodo.getDisciplinas().get(i);
-
-				if(disc.getPreRequisitos().contains(nome)){
-					removeDisciplinaPeriodo(disc.getNome());
-				}
-			}
-		}
 	}
 
 }
-	

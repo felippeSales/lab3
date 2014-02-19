@@ -19,6 +19,7 @@ public class Application extends Controller {
 
 	public static Result index() {
 		sistema = new Sistema();
+		
 		return ok(index.render(sistema.getPeriodos(),
 				sistema.getCatalogoDisc(), erro));
 	}
@@ -32,7 +33,7 @@ public class Application extends Controller {
 		try {
 
 			DynamicForm formDisciplina = new DynamicForm();
-
+			
 			final DynamicForm form = formDisciplina.bindFromRequest();
 			final String nome = form.get("nome");
 			final int periodo = Integer.parseInt(form.get("periodo")) - 1;
