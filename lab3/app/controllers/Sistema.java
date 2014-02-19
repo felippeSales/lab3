@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import Exceptions.PreRequisitosInsuficientesException;
+
 import models.CatalogoDisciplinas;
 import models.Disciplina;
 import models.Periodo;
-import models.PreRequisitosInsuficientesException;
 
 /**
  * Classe responsável pelo controle do sistema
