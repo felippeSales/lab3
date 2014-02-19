@@ -116,33 +116,62 @@ public class Sistema {
 	 *            Nome da disciplina a ser removida
 	 */
 	public void removeDisciplinaPeriodo(String nome) {
+		int i = catalogo.disciplinaIndice(nome);
 
 		if (catalogo.getDisciplina(nome).getAlocada()) {
-			Iterator<Periodo> itPeriodo = periodos.iterator();
 
-			while (itPeriodo.hasNext()) {
-				Periodo periodo = (Periodo) itPeriodo.next();
-				Iterator<Disciplina> itDisciplina = periodo.getDisciplinas()
-						.iterator();
+			catalogo.getCatalogo().get(i).setAlocada();
 
-				while (itDisciplina.hasNext()) {
-					Disciplina disciplina = (Disciplina) itDisciplina.next();
+			Disciplina disc;
+			Periodo periodo;
 
-					if (disciplina.getNome().equals(nome)) {
-						Iterator<String> preRequisito = disciplina
-								.getPreRequisitos().iterator();
+			for(int j = 0; j < periodos.size(); j++){
+				periodo =  periodos.get(j);
 
-						while (preRequisito.hasNext()) {
-							removeDisciplinaPeriodo(preRequisito.next());
-						}
+				for(int k = 0; k < periodo.getDisciplinas().size(); k++){
+
+					disc = periodo.getDisciplinas().get(k);
+
+					if(disc.getNome().equals(nome)){
 						periodo.rmDisciplina(nome);
-						catalogo.getDisciplina(nome).setAlocada();
+
+						j = 0;
+						k = 0;
+						rmDisciplinaPreRequisitos(nome);
 					}
 				}
 
 			}
 		}
+	}
 
+
+	/**
+	 * Verifica se a disciplina e prerequisito de alguma, se sim a remove
+	 * usando o metodo removeDisciplinaPeriodo
+	 * 
+	 * @param nome
+	 *            Nome da disciplina
+	 */
+	private void rmDisciplinaPreRequisitos(String nome){
+		Periodo periodo;
+		Disciplina disc;
+
+		for(int j = 0; j < periodos.size(); j++ ) {
+			periodo =  periodos.get(j);
+
+			for(int i = 0 ; i < periodo.getDisciplinas().size(); i++){
+
+				disc = periodo.getDisciplinas().get(i);
+
+				if(disc.getPreRequisitos().contains(nome)){
+					j = 0;
+					i = 0;
+					removeDisciplinaPeriodo(disc.getNome());
+					
+				}
+			}
+		}
 	}
 
 }
