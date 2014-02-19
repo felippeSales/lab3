@@ -104,7 +104,7 @@ public class Sistema {
 			int numPr = disc.getNumPreRequisitos(); //numpr significa o numero de pre-requisitos de cada disciplina
 			for(int i = 0; i < periodo; i++){
 				for(int j = 0; j < periodos.get(i).numeroDisciplinas(); j++){
-					if(disc.getPreRequisitos().contains(periodos.get(i).getDisciplinas().get(j).getNome())){
+					if(disc.getPreRequisitos().contains(periodos.get(i).indiceDisciplina(j).getNome())){
 						numPr--;
 					}
 				}
@@ -141,12 +141,13 @@ public class Sistema {
 
 				for(int k = 0; k < periodo.numeroDisciplinas(); k++){
 
-					disc = periodo.getDisciplinas().get(k);
+					disc = periodo.indiceDisciplina(k);
 
 					if(disc.getNome().equals(nome)){
 						periodo.rmDisciplina(nome);
 
-						j = 0;
+						// Zera o contador ao remover uma disciplina.
+						j = 0; 
 						k = 0;
 						rmDisciplinaPreRequisitos(nome);
 					}
@@ -171,9 +172,9 @@ public class Sistema {
 		for(int j = 0; j < periodos.size(); j++ ) {
 			periodo =  periodos.get(j);
 
-			for(int i = 0 ; i < periodo.getDisciplinas().size(); i++){
+			for(int i = 0 ; i < periodo.numeroDisciplinas(); i++){
 
-				disc = periodo.getDisciplinas().get(i);
+				disc = periodo.indiceDisciplina(i);
 
 				if(disc.getPreRequisitos().contains(nome)){
 					j = 0;

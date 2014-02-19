@@ -20,6 +20,16 @@ public class Periodo {
 		disciplinas = new ArrayList<Disciplina>();
 	}
 
+	
+	/**
+	 * Retorna a disciplina da lista de disciplinas
+	 * 
+	 * @param i
+	 *            Disciplina a ser retornada
+	 */	
+	public Disciplina indiceDisciplina(int i){
+		return disciplinas.get(i);
+	}
 
 	/**
 	 * Adiciona disciplinas no período
