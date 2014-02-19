@@ -10,14 +10,12 @@ import java.util.List;
  */
 public class Periodo {
 
-	// CREATOR: Periodo eh feito de disciplinas e tem o numero total de creditos nele
 	private List<Disciplina> disciplinas;
 	private int totalCreditos = 0;
 
 	/**
 	 * Construtor
 	 */
-
 	public Periodo() {
 		disciplinas = new ArrayList<Disciplina>();
 	}
@@ -50,6 +48,7 @@ public class Periodo {
 		return disciplinas;
 	}
 	
+	// INFORMATION EXPERT: Periodo tem todas as disciplinas, logo ele pode calcular a dificuldade total
 	public int getDificuldadeTotal(){
 		int soma = 0;
 		for (int i = 0; i < disciplinas.size(); i++){
@@ -58,7 +57,7 @@ public class Periodo {
 		return soma;
 	}
 	
-	
+	// INFORMATION EXPERT: Periodo e formado por disciplinas
 	/**
 	 * Remove a disciplina do período
 	 * 
@@ -83,6 +82,7 @@ public class Periodo {
 		}
 	}
 
+	// INFORMATION EXPERT: Periodo tem todas as disciplinas, logo ele pode calcular o total de creditos
 	/**
 	 * 
 	 * @return Retorna o total de creditos ja alocados do periodo
