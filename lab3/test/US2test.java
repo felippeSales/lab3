@@ -77,8 +77,8 @@ public class US2test {
 		}
 		
 		assertEquals(sistema.getPeriodos().get(4).getTotalCreditos(), 2);
-		
-		sistema.removeDisciplinaPeriodo( "Teoria dos Grafos");
+
+		sistema.removeDisciplinaPeriodo("Teoria dos Grafos");
 		
 		assertEquals(sistema.getPeriodos().get(4).getTotalCreditos(), 0);
 	}

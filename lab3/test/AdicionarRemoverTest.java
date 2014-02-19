@@ -87,7 +87,7 @@ public class AdicionarRemoverTest {
 		
 		assertEquals(sistema.getPeriodos().get(3).getTotalCreditos(), 4);
 		
-		sistema.removeDisciplinaPeriodo( "Cálculo II");
+		sistema.removeDisciplinaPeriodo("Cálculo II");
 		
 		assertEquals(sistema.getPeriodos().get(3).getTotalCreditos(), 0);
 	}
