@@ -84,7 +84,8 @@
 	                                              	<input type="submit" value="X">
 	                                        		
 	                                        </form></nome>
-	                                        <descricao>@disciplina.getCreditos() creditos</descricao>
+	                                        <descricao>@disciplina.getCreditos() creditos \n
+	                                        Dificuldade: @disciplina.getDificuldade()</descricao>
 			                </div>
 	            		}
             		 }else{
@@ -92,14 +93,16 @@
 			                <div class="disciplina" id="@disciplina.getNome()">
 			                    <nome>@disciplina.getNome()
 			                    <br>
-	                            <descricao>@disciplina.getCreditos() créditos</descricao>
+	                            <descricao>@disciplina.getCreditos() créditos
+	                            <br> Dificuldade: @disciplina.getDificuldade()</descricao>
 			                </div>
 	            		}
             		 
             		 }
             		 
                         <div class ="periodo"><nome> Total de créditos</nome><br/>
-                        	<descricao>@periodo.getTotalCreditos() créditos</descricao></div>
+                        	<descricao>@periodo.getTotalCreditos() créditos <br>
+                        	 <nome>Dificuldade Total <br></nome>@periodo.getDificuldadeTotal()</descricao></div>
                         
                         </div>
                     }
@@ -118,7 +121,7 @@
                 @if(disciplina.getAlocada() != true){
                 <div class="disciplina float-left">
                         <nome>@disciplina.getNome()</nome><br/>
-                        <descricao>@disciplina.getCreditos() créditos</descricao>
+                        <descricao>@disciplina.getCreditos() créditos<br> Dificuldade: @disciplina.getDificuldade() </descricao>
                 </div>
                 }
                 }        

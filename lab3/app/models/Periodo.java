@@ -13,7 +13,7 @@ public class Periodo {
 	// CREATOR: Periodo eh feito de disciplinas e tem o numero total de creditos nele
 	private List<Disciplina> disciplinas;
 	private int totalCreditos = 0;
-	private double totalDificuldade = 0.0;
+	private int totalDificuldade = 0;
 
 	/**
 	 * Construtor
@@ -52,8 +52,8 @@ public class Periodo {
 		return disciplinas;
 	}
 	
-	public double getDificuldadeMedia(){
-		return totalDificuldade / getDisciplinas().size();
+	public int getDificuldadeTotal(){
+		return totalDificuldade;
 	}
 	
 	
