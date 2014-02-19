@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import Exceptions.LimitesExcedidosException;
+
 /**
  * Classe que representa os períodos que o aluno irá alocar disciplinas
  * 

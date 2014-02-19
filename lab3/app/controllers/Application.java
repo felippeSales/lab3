@@ -1,5 +1,7 @@
 package controllers;
 
+import Exceptions.LimitesExcedidosException;
+import Exceptions.PreRequisitosInsuficientesException;
 import models.*;
 import play.data.DynamicForm;
 import play.data.Form;
