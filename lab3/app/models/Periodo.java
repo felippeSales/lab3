@@ -56,7 +56,7 @@ public class Periodo {
 	 */
 	
 	public int numeroDisciplinas(){
-		disciplinas.size();
+		return disciplinas.size();
 	}
 	
 	public int getDificuldadeTotal(){
