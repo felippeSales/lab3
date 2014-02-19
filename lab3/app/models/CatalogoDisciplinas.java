@@ -246,14 +246,21 @@ public class CatalogoDisciplinas {
 		return todasDisciplinas;
 	}
 
+	/**
+	 * Recupera a disciplina como objeto a partir do nome
+	 * 
+	 * @param nome
+	 *            Nome da disciplina
+	 * @return A disciplina como objeto
+	 */
 	public Disciplina getDisciplina(String nome) {
 		for (int i = 0; i < todasDisciplinas.size(); i++) {
-			if (todasDisciplinas.get(i).getNome().equals(nome)){
+			if (todasDisciplinas.get(i).getNome().equals(nome)) {
 				return todasDisciplinas.get(i);
 			}
 		}
 		return null;
-	
+
 	}
 
 	/**
